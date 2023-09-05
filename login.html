@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de login</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+    <div>
+        <h1>Login</h1>
+        <form action="processa_login.php" method="post"></form>
+        <input type="text" placeholder="Nome">
+        <br><br>
+        <input type="password" id="senha" placeholder="Digite sua senha"><br><br>
+        
+        <button onclick="mostrarOcultarSenha()" id="senhabt">Mostrar/Ocultar Senha</button>
+        <br><br>
+        <button>Enviar</button> 
+        <h4>Não tem cadastro, clique aqui e se cadastre</h4>
+        <button onclick="redirecionarParaCadastro()">Cadastro</button>  
+    </div>
+    <script>
+        function redirecionarParaCadastro() {
+            window.location.href = "cadastro.html";
+        }
+        function mostrarOcultarSenha() {
+            var senhaInput = document.getElementById("senha");
+
+            if (senhaInput.type === "password") {
+                senhaInput.type = "text";
+            } else {
+                senhaInput.type = "password";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+</body>
+</html>
