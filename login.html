@@ -18,12 +18,12 @@
         <button onclick="mostrarOcultarSenha()" id="senhabt">Mostrar/Ocultar Senha</button>
         <br><br>
         <button>Enviar</button> 
-        <h4>Não tem cadastro, clique aqui e se cadastre</h4>
-        <button onclick="redirecionarParaCadastro()">Cadastro</button>  
+        <br><br>
+        <button onclick="redirecionarParaInicial()">Voltar para pagina inicial</button>  
     </div>
     <script>
-        function redirecionarParaCadastro() {
-            window.location.href = "cadastro.html";
+        function redirecionarParaInicial() {
+            window.location.href = "index.html";
         }
         function mostrarOcultarSenha() {
             var senhaInput = document.getElementById("senha");
