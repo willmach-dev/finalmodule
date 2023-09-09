@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
+    <title>Painel</title>
     <link rel="stylesheet" type="text/css" href="./css/style_painel.css">
 </head>
 <body>
@@ -20,17 +20,6 @@
             window.location.href = "pessoas.php";
         }
     </script>
-    <!-- Conteúdo principal -->
-    <div class="content">
-        <h1>Produtos</h1>
-
-        <!-- Formulário para fazer upload do arquivo XML -->
-        <form action="processar_xml.php" method="post" enctype="multipart/form-data">
-            <label for="xmlFile">Selecione um arquivo XML:</label>
-            <input type="file" name="xmlFile" id="xmlFile" accept=".xml">
-            <br>
-            <input type="submit" value="Enviar XML">
-        </form>
-    </div>
+    
 </body>
 </html>

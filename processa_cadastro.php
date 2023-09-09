@@ -1,4 +1,6 @@
 <?php
+
+include("includes/conexao.php");
 // Verifica se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera os dados do formulário
@@ -19,19 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "As senhas não coincidem.";
         exit;  |||| Coloca no validação de campos empty($confirmaSenha)
     }*/
-
-    // Conexão com o banco de dados (substitua pelas suas configurações)
-    $servername = "localhost:3306";
-    $username = "root";
-    $password = "1234";
-    $dbname = "progintegra2";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Erro na conexão com o banco de dados: " . $conn->connect_error);
-    }
-
     // Prepara a consulta SQL para inserir os dados na tabela de usuários (substitua pelo nome correto da sua tabela)
     $sql = "INSERT INTO usuarios (nome, email, cpf, senha) VALUES (?, ?, ?, ?)";
 

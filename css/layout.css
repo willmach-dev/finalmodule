@@ -1,0 +1,13 @@
+/* layout.css */
+.sidenav {
+    width: 200px;
+    float: left; /* Define que o menu lateral ficará à esquerda */
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.content {
+    margin-left: 220px; /* Define a margem esquerda para deixar espaço para o menu lateral */
+    padding: 20px;
+}
