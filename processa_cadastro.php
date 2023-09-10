@@ -1,6 +1,6 @@
 <?php
-
-include("includes/conexao.php");
+include 'session.php';
+include 'includes/conexao.php';
 // Verifica se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera os dados do formulário
@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "Cadastro realizado com sucesso!";
+        header("Location: login.php");
     } else {
         echo "Erro ao cadastrar o usuário: " . $stmt->error;
     }

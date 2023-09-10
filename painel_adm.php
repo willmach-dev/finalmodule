@@ -1,5 +1,10 @@
+<?php
+include 'session.php';
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +19,7 @@
     </div>
     <script>
         function redirecionarParaProdutos() {
-            window.location.href = "produtos.html";
+            window.location.href = "produtos.php";
         }
         function redirecionarParaPessoas() {
             window.location.href = "pessoas.php";

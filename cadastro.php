@@ -33,7 +33,7 @@
     </div>
     <script>
         function redirecionarParaLogin() {
-            window.location.href = "login.html";
+            window.location.href = "login.php";
         }
         document.addEventListener("DOMContentLoaded", function() {
             const senhaField = document.getElementById("senha");

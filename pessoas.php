@@ -1,3 +1,8 @@
+<?php
+include 'session.php';
+include 'includes/conexao.php';
+$conn = conexao();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,7 +20,7 @@
     </div>
     <script>
         function redirecionarParaProdutos() {
-            window.location.href = "produtos.html";
+            window.location.href = "produtos.php";
         }
         function redirecionarParaPessoas() {
             window.location.href = "pessoas.php";
@@ -26,27 +31,42 @@
         <h1>Dados do Banco de Dados</h1>
         <table>
             <tr>
+                <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Senha</th>
                 <th>CPF</th>
                 <th>Permissão</th>
+                <th>Ações</th> <!-- Coluna para ações -->
             </tr>
             <?php
-            include("includes/conexao.php");
-            $sql = "SELECT nome, email, senha, cpf, permissao FROM usuarios";
+            
+            $sql = "SELECT id,nome, email, senha, cpf, permissao FROM usuarios";
 
             // Executa a consulta
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row["nome"] . "</td><td>" . $row["email"] . "</td><td>" . $row["senha"] . "</td><td>" . $row["cpf"] . "</td><td>" . $row["permissao"] . "</td></tr>";
+            $stmt = $conn->query($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            if (isset($result)) {
+                foreach ($result as $row) {
+                    echo "<tr>
+                            <td>" . $row["id"] . "</td>
+                            <td>" . $row["nome"] . "</td>
+                            <td>" . $row["email"] . "</td>
+                            <td>" . $row["senha"] . "</td>
+                            <td>" . $row["cpf"] . "</td>
+                            <td>" . $row["permissao"] . "</td>
+                            <td>
+                                <a href='controller/editar_usuario.php?id=" . $row["id"] . "'>Editar</a> |
+                                
+                                <a href='controller/excluir_usuario.php?id=" . $row["id"] . "'>Excluir</a>
+                                <br><br>
+                            </td>
+                          </tr>";
                 }
             } else {
                 echo "Nenhum resultado encontrado.";
             }
-
-            $conn->close();
             ?>
         </table>
     </div>

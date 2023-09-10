@@ -15,10 +15,10 @@
     </div>
     <script>
         function redirecionarParaLogin() {
-            window.location.href = "login.html";
+            window.location.href = "login.php";
         }
         function redirecionarParaCadastro() {
-            window.location.href = "cadastro.html";
+            window.location.href = "cadastro.php";
         }
     </script>
 

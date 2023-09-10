@@ -1,3 +1,7 @@
+<?php
+include 'session.php';
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <link rel="stylesheet" type="text/css" href="./css/style_painel.css">
+    <link rel="stylesheet" type="text/css" href="./css/layout.css"> <!-- Adicione um arquivo CSS para o layout -->
 </head>
 <body>
     <!-- Menu lateral -->
@@ -14,7 +19,7 @@
     </div>
     <script>
         function redirecionarParaProdutos() {
-            window.location.href = "produtos.html";
+            window.location.href = "produtos.php";
         }
         function redirecionarParaPessoas() {
             window.location.href = "pessoas.php";

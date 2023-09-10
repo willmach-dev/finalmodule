@@ -1,15 +1,16 @@
 <?php
-// Configurações do banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "1234";
-$dbname = "progintegra2";
-
-// Cria a conexão com o banco de dados
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verifica a conexão
-if ($conn->connect_error) {
-    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
-}
+//Connect to DataBase
+ function conexao(){
+    $dsn = 'mysql:dbname=progintegra2;host=localhost;charset=utf8';
+    $user = 'root';
+    $pass = '1234';
+    
+    //Return PDO
+        try {
+            $pdo = new PDO($dsn, $user, $pass); 
+            return $pdo;
+        } catch (PDOException $ex) {
+            echo 'Erro '.$ex->getMessage(); 
+        }
+    }          
 ?>
