@@ -10,19 +10,24 @@
 <body>
     <div>
         <h1>Login</h1>
-        <form action="processa_login.php" method="POST">
-            <input type="text" name="email" placeholder="E-mail">
+        <form action="processa_login.php" method="POST" onsubmit="return validarFormulario()">
+            <input type="text" name="email" id="email" placeholder="E-mail">
             <br><br>
-            <input type="password" id="senha" name="password" placeholder="Digite sua senha"><br><br>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha"><br><br>
             
-            <button onclick="mostrarOcultarSenha()" id="senhabt">Mostrar/Ocultar Senha</button>
+            <button type="button" onclick="mostrarOcultarSenha()" id="senhabt">Mostrar/Ocultar Senha</button>
             <br><br>
-            <input type="submit" id="btncadastro" value="Login"><br><br> <!-- Botão "Enviar" dentro do formulário -->
+            <input type="submit" id="btnlogin" value="Login"><br><br>
             <br><br>
-            <button onclick="redirecionarParaInicial()">Voltar para página inicial</button>  
+            <button type="button" onclick="redirecionarParaInicial()">Voltar para página inicial</button>  
         </form>
+        <p id="erro" style="color: red; display: none;">Por favor, preencha todos os campos.</p>
     </div>
     <script>
+        function redirecionarParaInicial() {
+            window.location.href = "index.php";
+        }
+        
         function mostrarOcultarSenha() {
             var senhaInput = document.getElementById("senha");
 
@@ -32,7 +37,21 @@
                 senhaInput.type = "password";
             }
         }
-    </script>
 
+        function validarFormulario() {
+            var emailInput = document.getElementById("email");
+            var senhaInput = document.getElementById("senha");
+            var erroMensagem = document.getElementById("erro");
+
+            if (emailInput.value.trim() === "" || senhaInput.value.trim() === "") {
+                erroMensagem.style.display = "block";
+                return false; // Impede o envio do formulário
+            } else {
+                erroMensagem.style.display = "none";
+                return true; // Permite o envio do formulário
+            }
+        }
+
+    </script>
 </body>
 </html>

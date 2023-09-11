@@ -11,3 +11,23 @@
     margin-left: 220px; /* Define a margem esquerda para deixar espaço para o menu lateral */
     padding: 20px;
 }
+.sidenav a:hover {
+    background-color: deepskyblue;
+}
+#btncadastro:hover{
+    background-color: deepskyblue;
+    cursor: pointer;
+}
+#container {
+    background-color: rgba(59, 57, 57, 0.9);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    border-radius: 15px;
+    color: #fff;
+    max-width: 800px;
+    margin-left: 250px; /* Para acomodar o sidenav */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

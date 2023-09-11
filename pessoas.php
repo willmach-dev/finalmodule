@@ -17,6 +17,8 @@ $conn = conexao();
     <div class="sidenav">
         <button onclick="redirecionarParaProdutos()">Produtos</button><br><br>
         <button onclick="redirecionarParaPessoas()">Pessoas</button><br><br>
+        <button onclick="redirecionarParaPecas()">Peças</button><br><br>
+            <button onclick="fazerLogout()">Logout</button><br><br> <!-- Botão de logout -->
     </div>
     <script>
         function redirecionarParaProdutos() {
@@ -24,6 +26,12 @@ $conn = conexao();
         }
         function redirecionarParaPessoas() {
             window.location.href = "pessoas.php";
+        }
+        function fazerLogout() {
+        window.location.href = "logout.php"; // Redireciona para a página de logout
+        }
+        function redirecionarParaPecas() {
+            window.location.href = "pecas.php";
         }
     </script>
     <!-- Fim menu lateral-->

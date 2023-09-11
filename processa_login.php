@@ -7,7 +7,7 @@ $conn = conexao();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recuperar os dados do formulário
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    $password = $_POST["senha"];
     
     // Consulta SQL para verificar a autenticação (substitua com a estrutura real da sua tabela)
     $sql = "SELECT * FROM usuarios WHERE email = :email";

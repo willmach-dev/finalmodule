@@ -2,6 +2,7 @@
 // Inicialize a variável de mensagem
 $mensagem = "";
 include("../includes/conexao.php");
+$conn = conexao();
 // Verifique se o ID do usuário foi fornecido na URL
 if (isset($_GET['id'])) {
     // Recupere o ID do usuário da URL
@@ -22,17 +23,22 @@ if (isset($_GET['id'])) {
             $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
             // Prepare e execute a consulta SQL de atualização, incluindo a nova senha hash
-            $sql = "UPDATE usuarios SET nome = ?, email = ?, senha = ? WHERE id = ?";
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id = :id";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssi", $nome, $email, $senhaHash, $id);
+            $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
+            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $stmt->bindValue(':senha', $senhaHash, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
             // Define a mensagem de sucesso
             $mensagem = "Dados do usuário atualizados com sucesso, incluindo a senha.";
         } else {
             // Se a senha não foi alterada, apenas atualize os outros campos
-            $sql = "UPDATE usuarios SET nome = ?, email = ? WHERE id = ?";
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email WHERE id = :id";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssi", $nome, $email, $id);
+            $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
+            $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
             // Define a mensagem de sucesso
             $mensagem = "Dados do usuário atualizados com sucesso, sem alterações na senha.";
@@ -43,19 +49,18 @@ if (isset($_GET['id'])) {
             header("Location: ../pessoas.php");
             exit;
         } else {
-            echo "Erro ao atualizar o usuário: " . $stmt->error;
+            echo "Erro ao atualizar o usuário: " . $stmt->errorInfo()[2];
         }
-
-        $stmt->close();
-        $conn->close();
     }
 
     // Caso contrário, você pode exibir o formulário de edição
-    $sql = "SELECT * FROM usuarios WHERE id = $id";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM usuarios WHERE id = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
 
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
+    if ($stmt->rowCount() == 1) {
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
         // Exiba o formulário de edição com os dados do usuário
         ?>
         <!DOCTYPE html>
@@ -89,8 +94,6 @@ if (isset($_GET['id'])) {
     } else {
         echo "Usuário não encontrado.";
     }
-
-    $conn->close();
 } else {
     echo "ID de usuário não fornecido.";
 }
