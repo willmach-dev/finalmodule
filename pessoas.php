@@ -22,7 +22,7 @@ $conn = conexao();
     </div>
     <script>
         function redirecionarParaProdutos() {
-            window.location.href = "produtos.php";
+            window.location.href = "produtos_xml.php";
         }
         function redirecionarParaPessoas() {
             window.location.href = "pessoas.php";
@@ -31,7 +31,7 @@ $conn = conexao();
         window.location.href = "logout.php"; // Redireciona para a página de logout
         }
         function redirecionarParaPecas() {
-            window.location.href = "pecas.php";
+            window.location.href = "pecas_xml.php";
         }
     </script>
     <!-- Fim menu lateral-->

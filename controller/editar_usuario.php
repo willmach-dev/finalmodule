@@ -14,6 +14,7 @@ if (isset($_GET['id'])) {
         $nome = $_POST['nome'];
         $email = $_POST['email'];
         $senha = $_POST['senha']; // Nova senha
+        $permissao = isset($_POST['permissao']) ? 1 : 0; // Verifica se o checkbox de permissão está marcado
 
         // Validação de entrada (adicione validações mais rigorosas conforme necessário)
 
@@ -22,22 +23,24 @@ if (isset($_GET['id'])) {
             // Gerar hash para a nova senha
             $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-            // Prepare e execute a consulta SQL de atualização, incluindo a nova senha hash
-            $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id = :id";
+            // Prepare e execute a consulta SQL de atualização, incluindo a nova senha hash e permissão
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha, permissao = :permissao WHERE id = :id";
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
             $stmt->bindValue(':email', $email, PDO::PARAM_STR);
             $stmt->bindValue(':senha', $senhaHash, PDO::PARAM_STR);
+            $stmt->bindValue(':permissao', $permissao, PDO::PARAM_INT);
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
             // Define a mensagem de sucesso
             $mensagem = "Dados do usuário atualizados com sucesso, incluindo a senha.";
         } else {
             // Se a senha não foi alterada, apenas atualize os outros campos
-            $sql = "UPDATE usuarios SET nome = :nome, email = :email WHERE id = :id";
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, permissao = :permissao WHERE id = :id";
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':nome', $nome, PDO::PARAM_STR);
             $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+            $stmt->bindValue(':permissao', $permissao, PDO::PARAM_INT);
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
             // Define a mensagem de sucesso
@@ -85,6 +88,8 @@ if (isset($_GET['id'])) {
                     <input type="text" name="nome" value="<?php echo $row['nome']; ?>">
                     <input type="text" name="email" value="<?php echo $row['email']; ?>">
                     <input type="password" name="senha" placeholder="Nova Senha">
+                    <label for="permissao">Permissão de Administrador</label>
+                    <input type="checkbox" name="permissao" id="permissao" <?php if ($row['permissao'] == 1) echo "checked"; ?>>
                     <input type="submit" value="Salvar">
                 </form>
             </div>

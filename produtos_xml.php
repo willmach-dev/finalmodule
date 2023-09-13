@@ -7,7 +7,7 @@ include 'session.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peças</title>
+    <title>Produtos</title>
     <link rel="stylesheet" type="text/css" href="./css/style_painel.css">
     <link rel="stylesheet" type="text/css" href="./css/layout.css"> <!-- Adicione um arquivo CSS para o layout -->
 </head>
@@ -21,24 +21,24 @@ include 'session.php';
     </div>
     <script>
         function redirecionarParaProdutos() {
-            window.location.href = "produtos.php";
+            window.location.href = "produtos_xml.php";
         }
         function redirecionarParaPessoas() {
             window.location.href = "pessoas.php";
         }
+        function redirecionarParaPecas() {
+            window.location.href = "pecas_xml.php";
+        }
         function fazerLogout() {
         window.location.href = "logout.php"; // Redireciona para a página de logout
-        }
-        function redirecionarParaPecas() {
-            window.location.href = "pecas.php";
         }
     </script>
     <!-- Conteúdo principal -->
     <div class="content">
-        <h1>Peças</h1>
+        <h1>Produtos</h1>
 
         <!-- Formulário para fazer upload do arquivo XML -->
-        <form action="processar_xml.php" method="post" enctype="multipart/form-data">
+        <form action="processa_prod.php" method="post" enctype="multipart/form-data">
             <label for="xmlFile">Selecione um arquivo XML:</label>
             <input type="file" name="xmlFile" id="xmlFile" accept=".xml">
             <br>

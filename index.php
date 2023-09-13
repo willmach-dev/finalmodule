@@ -6,14 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Inicial</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-</head>
-<body>
-    <div>
-        <h1>Pagina inicial</h1>
-        <button onclick="redirecionarParaLogin()">Login</button><br><br>  
-        <button onclick="redirecionarParaCadastro()">Cadastro</button>  
-    </div>
-    <script>
+<script>
         function redirecionarParaLogin() {
             window.location.href = "login.php";
         }
@@ -21,9 +14,13 @@
             window.location.href = "cadastro.php";
         }
     </script>
-
-</body>
-</html>
+</head> <body>
+    <div id="central">
+        <h1>Pagina inicial</h1>
+        <button onclick="redirecionarParaLogin()">Login</button><br><br>  
+        <button onclick="redirecionarParaCadastro()">Cadastro</button>  
+    </div>
+   
 
 </body>
 </html>

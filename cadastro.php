@@ -8,7 +8,7 @@
     <title>Criação de Usuário</title>
 </head>
 <body>
-    <div>
+    <div id="central">
         <h2>Criação de Usuário</h2>
         <form action="processa_cadastro.php" method="POST">
             <label for="nome">Nome:</label>
@@ -38,23 +38,6 @@
         document.addEventListener("DOMContentLoaded", function() {
             const senhaField = document.getElementById("senha");
             const confirmaSenhaField = document.getElementById("confirma_senha");
-
-            senhaField.addEventListener("click", function() {
-                senhaField.type = "text";
-            });
-
-            confirmaSenhaField.addEventListener("click", function() {
-                confirmaSenhaField.type = "text";
-            });
-
-            senhaField.addEventListener("blur", function() {
-                senhaField.type = "password";
-            });
-
-            confirmaSenhaField.addEventListener("blur", function() {
-                confirmaSenhaField.type = "password";
-            });
-
             const emailField = document.getElementById("email");
             const cpfField = document.getElementById("cpf");
 
@@ -81,10 +64,10 @@
             cpfField.addEventListener("input", function() {
                 const cpf = cpfField.value;
                 // Formato CPF (XXX.XXX.XXX-XX)
-                //const cpfRegex = /^(\d{3}\.\d{3}\.\d{3}-\d{2})$/;
+                const cpfRegex = /^(\d{3}\.\d{3}\.\d{3}-\d{2})$/;
                 
-                if (cpf.length > 11) {
-                    cpfField.value = cpf.slice(0, 11);
+                if (cpf.length > 14) {
+                    cpfField.value = cpf.slice(0, 14);
                 } else {
                     cpfField.value = cpf;
                 }

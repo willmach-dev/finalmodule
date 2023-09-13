@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-    <div>
+    <div id="central">
         <h1>Login</h1>
         <form action="processa_login.php" method="POST" onsubmit="return validarFormulario()">
             <input type="text" name="email" id="email" placeholder="E-mail">
