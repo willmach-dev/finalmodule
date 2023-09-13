@@ -13,6 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Erro ao processar o XML.");
         }
 
+        $totalInserido = 0; // Variável para contar o total de produtos inseridos
+
         try {
             // Preparar a consulta SQL com placeholders
             $sql = "INSERT INTO produtos (nomeproduto, valorproduto, quantidade, descricaoproduto) VALUES (:nome, :valor, :quantidade, :descricao)";
@@ -33,8 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     ':descricao' => $descricaoproduto,
                 ]);
 
-                echo "Produto inserido com sucesso!";
+                $totalInserido++; // Incrementar o contador de produtos inseridos com sucesso
             }
+
+            // Retornar o total de produtos inseridos como resposta JSON
+            echo json_encode(['totalInserido' => $totalInserido]);
         } catch (PDOException $e) {
             echo "Erro ao inserir os produtos: " . $e->getMessage();
         }

@@ -32,6 +32,19 @@ include 'session.php';
         function fazerLogout() {
         window.location.href = "logout.php"; // Redireciona para a página de logout
         }
+        // Função para obter parâmetros da URL
+        function obterParametroURL(nome) {
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            return urlSearchParams.get(nome);
+        }
+
+        // Verificar se há uma mensagem na URL
+        const mensagem = obterParametroURL('mensagem');
+
+        if (mensagem) {
+            // Exibir a mensagem usando um alert ou outro elemento na página
+            alert(mensagem);
+        }
     </script>
     <!-- Conteúdo principal -->
     <div class="content">

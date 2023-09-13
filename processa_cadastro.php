@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
 
     if ($stmt === false) {
-        echo "Erro na preparação da consulta: " . $conn->error;
+        echo "Erro na preparação da consulta: ";
         exit;
     }
 
