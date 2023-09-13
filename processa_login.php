@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["senha"];
     
-    // Consulta SQL para verificar a autenticação (substitua com a estrutura real da sua tabela)
+    // Consulta SQL para verificar a autenticação
     $sql = "SELECT * FROM usuarios WHERE email = :email";
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(":email", $email);
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($result)) {
          
-        // Verificar a senha (substitua com sua própria lógica de hash de senha)
+        // Verificar a senha
         if (password_verify($password, $result["senha"])) {
             $_SESSION['email'] = $email;
             // Autenticação bem-sucedida, verifique a permissão

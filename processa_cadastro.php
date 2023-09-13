@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Prepara a consulta SQL para inserir os dados na tabela de usuários (substitua pelo nome correto da sua tabela)
+    // Prepara a consulta SQL para inserir os dados na tabela de usuários 
     $sql = "INSERT INTO usuarios (nome, email, cpf, senha) VALUES (?, ?, ?, ?)";
 
     // Prepara a declaração SQL
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Hash da senha (use uma função segura para hash em produção)
+    // Hash da senha
     $hashedSenha = password_hash($senha, PASSWORD_DEFAULT);
 
     // Bind dos parâmetros com seus tipos
