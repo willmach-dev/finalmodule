@@ -1,5 +1,8 @@
 <?php
+include 'verificalogado.php';
 include 'session.php';
+
+include 'sidenavadm.php';
 
 ?>
 <!DOCTYPE html>
@@ -9,31 +12,14 @@ include 'session.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel</title>
-    <link rel="stylesheet" type="text/css" href="./css/style_painel.css">
-    <link rel="stylesheet" type="text/css" href="./css/layout.css">
+    <link rel="stylesheet" type="text/css" href="./css/painel.css">
 </head>
 <body>
-    <!-- Menu lateral -->
-    <div class="sidenav">
-        <button onclick="redirecionarParaProdutos()">Produtos</button><br><br>
-        <button onclick="redirecionarParaPessoas()">Pessoas</button><br><br>
-        <button onclick="redirecionarParaPecas()">Peças</button><br><br>
-            <button onclick="fazerLogout()">Logout</button><br><br> <!-- Botão de logout -->
-    </div>
-    <script>
-        function redirecionarParaProdutos() {
-            window.location.href = "produtos.php";
-        }
-        function redirecionarParaPessoas() {
-            window.location.href = "pessoas.php";
-        }
-        function fazerLogout() {
-        window.location.href = "logout.php"; // Redireciona para a página de logout
-        }
-        function redirecionarParaPecas() {
-            window.location.href = "pecas.php";
-        }
-    </script>
-    
+<div id="painel">
+    <!-- Espera para texto do meio caso queira adicionar -->
+    <h1>Seja bem vindo administrador</h1>
+    <h6>Versão 1.0</h6>
+</div>
+ 
 </body>
 </html>

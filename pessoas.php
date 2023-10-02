@@ -10,7 +10,6 @@ $conn = conexao();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <link rel="stylesheet" type="text/css" href="./css/style_painel.css">
-    <link rel="stylesheet" type="text/css" href="./css/layout.css"> <!-- Adicione um arquivo CSS para o layout -->
 </head>
 <body>
     <!-- Menu lateral -->
@@ -28,7 +27,7 @@ $conn = conexao();
             window.location.href = "pessoas.php";
         }
         function fazerLogout() {
-        window.location.href = "logout.php"; // Redireciona para a página de logout
+        window.location.href = "controller/logout.php";  // Redireciona para a página de logout
         }
         function redirecionarParaPecas() {
             window.location.href = "pecas_xml.php";

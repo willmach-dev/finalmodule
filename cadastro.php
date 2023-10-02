@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./css/style_form.css">
+    <link rel="stylesheet" type="text/css" href="./css/cadastro.css">
     <title>Criação de Usuário</title>
 </head>
 <body>
     <div id="central">
+    <div id="container">
         <h2>Criação de Usuário</h2>
         <form action="processa_cadastro.php" method="POST">
             <label for="nome">Nome:</label>
@@ -25,15 +26,14 @@
         
             <label for="confirma_senha">Confirmação de Senha:</label>
             <input type="password" id="confirma_senha" name="confirma_senha" required><br><br>
-        
-            <input type="submit" id="btncadastro" value="Cadastrar"><br><br>
-
-            <button onclick="redirecionarParaLogin()" id="btncadastro">Voltar para Login</button>
+            <button type="submit" id="btncadastro">Cadastrar</button>
+            <button type="button" id="btnlogin" onclick="redirecionarParaLogin()">Voltar</button>
         </form>
+    </div>
     </div>
     <script>
         function redirecionarParaLogin() {
-            window.location.href = "login.php";
+            window.location.href = "index.php";
         }
         document.addEventListener("DOMContentLoaded", function() {
             const senhaField = document.getElementById("senha");

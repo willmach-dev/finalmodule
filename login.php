@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de login</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
     <div id="central">
@@ -17,7 +19,7 @@
             
             <button type="button" onclick="mostrarOcultarSenha()" id="senhabt">Mostrar/Ocultar Senha</button>
             <br><br>
-            <input type="submit" id="btnlogin" value="Login"><br><br>
+            <input type="submit" id="btnlogin" value="Entrar"><br><br>
             <br><br>
             <button type="button" onclick="redirecionarParaInicial()">Voltar para página inicial</button>  
         </form>

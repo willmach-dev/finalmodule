@@ -5,5 +5,5 @@ include 'session.php'; // Inclua o arquivo de sessão
 session_destroy();
 
 // Redirecione para a página de login ou qualquer outra página de sua escolha
-header("Location: login.php");
+header("Location: ../login.php");
 ?>

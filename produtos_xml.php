@@ -30,7 +30,7 @@ include 'session.php';
             window.location.href = "pecas_xml.php";
         }
         function fazerLogout() {
-        window.location.href = "logout.php"; // Redireciona para a página de logout
+        window.location.href = "controller/logout.php";  // Redireciona para a página de logout
         }
         // Função para obter parâmetros da URL
         function obterParametroURL(nome) {
