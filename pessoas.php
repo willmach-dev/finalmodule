@@ -9,32 +9,15 @@ $conn = conexao();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
-    <link rel="stylesheet" type="text/css" href="./css/style_painel.css">
+    
+    <link rel="stylesheet" type="text/css" href="./css/nav.css">
+    <link rel="stylesheet" type="text/css" href="./css/tabelausr.css">
 </head>
 <body>
-    <!-- Menu lateral -->
-    <div class="sidenav">
-        <button onclick="redirecionarParaProdutos()">Produtos</button><br><br>
-        <button onclick="redirecionarParaPessoas()">Pessoas</button><br><br>
-        <button onclick="redirecionarParaPecas()">Peças</button><br><br>
-            <button onclick="fazerLogout()">Logout</button><br><br> <!-- Botão de logout -->
-    </div>
-    <script>
-        function redirecionarParaProdutos() {
-            window.location.href = "produtos_xml.php";
-        }
-        function redirecionarParaPessoas() {
-            window.location.href = "pessoas.php";
-        }
-        function fazerLogout() {
-        window.location.href = "controller/logout.php";  // Redireciona para a página de logout
-        }
-        function redirecionarParaPecas() {
-            window.location.href = "pecas_xml.php";
-        }
-    </script>
-    <!-- Fim menu lateral-->
-    <div class="content">
+        <div id="sidenav">
+            <?php include 'navadm.php'; ?>
+        </div>
+    <div class="table-container">
         <h1>Dados do Banco de Dados</h1>
         <table>
             <tr>
@@ -57,19 +40,17 @@ $conn = conexao();
             if (isset($result)) {
                 foreach ($result as $row) {
                     echo "<tr>
-                            <td>" . $row["id"] . "</td>
-                            <td>" . $row["nome"] . "</td>
-                            <td>" . $row["email"] . "</td>
-                            <td>" . $row["senha"] . "</td>
-                            <td>" . $row["cpf"] . "</td>
-                            <td>" . $row["permissao"] . "</td>
-                            <td>
-                                <a href='controller/editar_usuario.php?id=" . $row["id"] . "'>Editar</a> |
-                                
-                                <a href='controller/excluir_usuario.php?id=" . $row["id"] . "'>Excluir</a>
-                                <br><br>
-                            </td>
-                          </tr>";
+                    <td class='table-cell'>" . $row["id"] . "</td>
+                    <td class='table-cell'>" . $row["nome"] . "</td>
+                    <td class='table-cell'>" . $row["email"] . "</td>
+                    <td class='table-cell'>" . $row["senha"] . "</td>
+                    <td class='table-cell'>" . $row["cpf"] . "</td>
+                    <td class='table-cell'>" . $row["permissao"] . "</td>
+                    <td class='table-cell'>
+                        <a href='controller/editar_usuario.php?id=" . $row["id"] . "'>Editar</a> |
+                        <a href='controller/excluir_usuario.php?id=" . $row["id"] . "'>Excluir</a>
+                    </td>
+                </tr>";                
                 }
             } else {
                 echo "Nenhum resultado encontrado.";

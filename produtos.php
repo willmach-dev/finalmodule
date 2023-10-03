@@ -9,32 +9,15 @@ $conn = conexao();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
-    <link rel="stylesheet" type="text/css" href="./css/style_painel.css">
+    <link rel="stylesheet" type="text/css" href="./css/tabelaprod.css">
+    <link rel="stylesheet" type="text/css" href="./css/nav.css">
 </head>
 <body>
-    <!-- Menu lateral -->
-    <div class="sidenav">
-        <button onclick="redirecionarParaProdutos()">Produtos</button><br><br>
-        <button onclick="redirecionarParaPessoas()">Pessoas</button><br><br>
-        <button onclick="redirecionarParaPecas()">Peças</button><br><br>
-        <button onclick="fazerLogout()">Logout</button><br><br> <!-- Botão de logout -->
-    </div>
-    <script>
-        function redirecionarParaProdutos() {
-            window.location.href = "produtos.php"; // Altere para "produtos.php" para evitar redirecionamentos infinitos
-        }
-        function redirecionarParaPessoas() {
-            window.location.href = "pessoas.php";
-        }
-        function fazerLogout() {
-            window.location.href = "controller/logout.php";  // Redireciona para a página de logout
-        }
-        function redirecionarParaPecas() {
-            window.location.href = "pecas_xml.php";
-        }
-    </script>
+    <div id="sidenav">
+            <?php include 'navadm.php'; ?>
+        </div>
     <!-- Fim menu lateral-->
-    <div class="content">
+    <div class="table-container">
         <h1>Produtos</h1>
         <table>
             <tr>
@@ -52,16 +35,15 @@ $conn = conexao();
             $stmt = $conn->query($sql);
             $stmt->execute();
             $result = $stmt->fetchAll();
-            
             if (isset($result)) {
                 foreach ($result as $row) {
                     echo "<tr>
-                            <td>" . $row["id"] . "</td>
-                            <td>" . $row["nomeproduto"] . "</td>
-                            <td>" . $row["valorproduto"] . "</td>
-                            <td>" . $row["quantidade"] . "</td>
-                            <td>" . $row["descricaoproduto"] . "</td>
-                            <td>
+                    <td class='table-cell'>" . $row["id"] . "</td>
+                    <td class='table-cell'>" . $row["nomeproduto"] . "</td>
+                    <td class='table-cell'>" . $row["valorproduto"] . "</td>
+                    <td class='table-cell'>" . $row["quantidade"] . "</td>
+                    <td class='table-cell'>" . $row["descricaoproduto"] . "</td>
+                    <td class='table-cell'>
                                 <a href='editar_produto.php?id=" . $row["id"] . "'>Editar</a> |
                                 <a href='excluir_produto.php?id=" . $row["id"] . "'>Excluir</a>
                                 <br><br>

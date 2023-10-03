@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // Verificar se o usuário está logado
 if (!isset($_SESSION['email'])) {
     // Redirecionar para a página de login se não estiver logado
@@ -24,6 +22,3 @@ if ($result["permissao"] != 1) {
     header("Location: painel_usr.php");
     exit();
 }
-
-// Resto do conteúdo da página de administração
-?>

@@ -1,0 +1,20 @@
+
+button{
+    background-color: rgb(224, 182, 42);
+    border: none;
+    padding: 15px;
+    width: 87%;
+    border-radius: 10px;
+    color: white;
+    font-size: 13px;
+    
+}
+
+button:hover{
+    background-color: deepskyblue;
+    cursor: pointer;
+}
+
+#recepcao{
+    text-align: center;
+}

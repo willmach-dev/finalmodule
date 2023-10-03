@@ -1,0 +1,44 @@
+/* Estilo para a div de contêiner da tabela */
+.table-container {
+    max-width: 100%; /* Largura máxima da tabela */
+    overflow-x: auto; /* Torna a tabela rolável horizontalmente se necessário */
+}
+
+/* Estilo para as células da tabela */
+table {
+    width: 100%; /* Largura total da tabela */
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 8px; /* Espaçamento interno das células */
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+/* Estilo para os links de editar e excluir */
+.btn-edit, .btn-delete {
+    text-decoration: none;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}

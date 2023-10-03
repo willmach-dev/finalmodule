@@ -9,10 +9,6 @@
     
 </head>
 <body>
-    <!-- Sidenav -->
-    <div class="sidenav">
-        <a href="painel_usr.php">Voltar</a>
-    </div>
 
     <!-- Conteúdo principal -->
     <div class="container">
