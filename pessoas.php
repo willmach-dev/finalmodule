@@ -1,7 +1,9 @@
 <?php
 include 'session.php';
-include 'includes/conexao.php';
+include_once 'includes/conexao.php';
+include 'verificaadmin.php';
 $conn = conexao();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,7 +11,7 @@ $conn = conexao();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
-    
+
     <link rel="stylesheet" type="text/css" href="./css/nav.css">
     <link rel="stylesheet" type="text/css" href="./css/tabelausr.css">
 </head>
@@ -24,14 +26,13 @@ $conn = conexao();
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Senha</th>
                 <th>CPF</th>
                 <th>Permissão</th>
                 <th>Ações</th> <!-- Coluna para ações -->
             </tr>
             <?php
-            
-            $sql = "SELECT id,nome, email, senha, cpf, permissao FROM usuarios";
+
+            $sql = "SELECT id,nome, email, cpf, permissao FROM usuarios";
 
             // Executa a consulta
             $stmt = $conn->query($sql);
@@ -40,17 +41,16 @@ $conn = conexao();
             if (isset($result)) {
                 foreach ($result as $row) {
                     echo "<tr>
-                    <td class='table-cell'>" . $row["id"] . "</td>
+                    <td class='table-cell'>{$row["id"]}</td>
                     <td class='table-cell'>" . $row["nome"] . "</td>
                     <td class='table-cell'>" . $row["email"] . "</td>
-                    <td class='table-cell'>" . $row["senha"] . "</td>
                     <td class='table-cell'>" . $row["cpf"] . "</td>
                     <td class='table-cell'>" . $row["permissao"] . "</td>
                     <td class='table-cell'>
                         <a href='controller/editar_usuario.php?id=" . $row["id"] . "'>Editar</a> |
                         <a href='controller/excluir_usuario.php?id=" . $row["id"] . "'>Excluir</a>
                     </td>
-                </tr>";                
+                </tr>";
                 }
             } else {
                 echo "Nenhum resultado encontrado.";

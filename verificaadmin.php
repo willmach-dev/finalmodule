@@ -2,12 +2,11 @@
 // Verificar se o usuário está logado
 if (!isset($_SESSION['email'])) {
     // Redirecionar para a página de login se não estiver logado
-    header("Location: login.php");
-    exit();
+    return header("Location: login.php");
 }
 
 // Verificar se o usuário tem permissão de administrador
-include("includes/conexao.php");
+include_once "includes/conexao.php";
 $conn = conexao();
 $email = $_SESSION['email'];
 
@@ -19,6 +18,5 @@ $result = $stmt->fetch();
 
 if ($result["permissao"] != 1) {
     // Redirecionar para a página de usuário comum se não for um administrador
-    header("Location: painel_usr.php");
-    exit();
+    return header("Location: painel_usr.php");
 }

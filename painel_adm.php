@@ -1,8 +1,7 @@
 <?php
 
 include 'session.php';
-include 'verificalogado.php';
-
+include 'verificaadmin.php';
 
 ?>
 <!DOCTYPE html>

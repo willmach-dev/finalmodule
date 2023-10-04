@@ -1,3 +1,5 @@
+<?php include_once 'session.php' ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,15 +15,25 @@
     <div id="central">
         <h1>Login</h1>
         <form action="processa_login.php" method="POST" onsubmit="return validarFormulario()">
+            <?php
+                if(!empty($_SESSION['erro'])) {
+                    echo "
+                        <div style='background: red;'>
+                            <p>Usuário ou senha inválidos</p>
+                        </div>
+                    ";
+                    unset ($_SESSION['erro']);
+                }
+            ?>
             <input type="text" name="email" id="email" placeholder="E-mail">
             <br><br>
             <input type="password" id="senha" name="senha" placeholder="Digite sua senha"><br><br>
-            
+
             <button type="button" onclick="mostrarOcultarSenha()" id="senhabt">Mostrar/Ocultar Senha</button>
             <br><br>
             <input type="submit" id="btnlogin" value="Entrar"><br><br>
             <br><br>
-            <button type="button" onclick="redirecionarParaInicial()">Voltar para página inicial</button>  
+            <button type="button" onclick="redirecionarParaInicial()">Voltar para página inicial</button>
         </form>
         <p id="erro" style="color: red; display: none;">Por favor, preencha todos os campos.</p>
     </div>
@@ -29,7 +41,7 @@
         function redirecionarParaInicial() {
             window.location.href = "index.php";
         }
-        
+
         function mostrarOcultarSenha() {
             var senhaInput = document.getElementById("senha");
 
