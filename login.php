@@ -1,5 +1,3 @@
-<?php include_once 'session.php' ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,7 +7,7 @@
     <title>Tela de login</title>
     <link rel="stylesheet" type="text/css" href="./css/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 </head>
 <body>
     <div id="central">
