@@ -24,7 +24,6 @@ include 'session.php';
         <h2>No momento o sistema está sendo melhorado e deverá ser atualizado com o tempo</h2>
 
         <section style="max-width: 1200px; margin: 0 auto;">
-            <?php include 'loja/produtos.php'; ?>
         </section>
     </div>
 </body>

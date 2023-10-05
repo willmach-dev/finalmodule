@@ -26,10 +26,11 @@ $conn = conexao();
                 <th>Valor do Produto</th>
                 <th>Quantidade</th>
                 <th>Descrição do Produto</th>
+                <th>Imagem</th>
                 <th>Ações</th> <!-- Coluna para ações -->
             </tr>
             <?php
-            $sql = "SELECT id, nomeproduto, valorproduto, quantidade, descricaoproduto FROM produtos";
+            $sql = "SELECT id, nomeproduto, valorproduto, quantidade, descricaoproduto, caminho_imagem FROM produtos";
 
             // Executa a consulta
             $stmt = $conn->query($sql);
@@ -43,10 +44,15 @@ $conn = conexao();
                     <td class='table-cell'>" . $row["valorproduto"] . "</td>
                     <td class='table-cell'>" . $row["quantidade"] . "</td>
                     <td class='table-cell'>" . $row["descricaoproduto"] . "</td>
-                    <td class='table-cell'>
-                                <a href='editar_produto.php?id=" . $row["id"] . "'>Editar</a> |
-                                <a href='excluir_produto.php?id=" . $row["id"] . "'>Excluir</a>
+                    <td class='table-cell'><img src='caminho/para/sua/pasta/" . $row["caminho_imagem"] . "' alt='Imagem do Produto' width='100'></td>                    <td class='table-cell'>
+                                <a href='./controller/editar_produto.php?id=" . $row["id"] . "'>Editar</a> |
+                                <a href='./controller/exclui_produto.php?id=" . $row["id"] . "'>Excluir</a>
                                 <br><br>
+                                <form method='POST' action='./controller/processa_upload_imagem.php' enctype='multipart/form-data'>
+                                    <input type='hidden' name='produto_id' value='" . $row["id"] . "'>
+                                    <input type='file' name='imagem'>
+                                    <button type='submit'>Enviar Imagem</button>
+                                </form>
                             </td>
                           </tr>";
                 }
