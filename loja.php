@@ -1,11 +1,20 @@
 <?php
-include_once '../session.php';
-include_once '../includes/conexao.php';
+include_once 'session.php';
+include_once 'includes/conexao.php';
 $conn = conexao();
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja</title>
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+</head>
+<body>
 <div id="nav">
     <!-- Inclua o seu arquivo navuser.php aqui -->
-    <?php include '../navuser.php'; ?>
+    <?php include 'navuser.php'; ?>
 </div>
 <div class="table-container">
     <h1>Produtos</h1>
@@ -20,7 +29,7 @@ $conn = conexao();
         echo "<section style='display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;'>";
         foreach ($result as $row) {
             // Construa o caminho completo da imagem com base no ID do produto
-            $imagemProduto = "../uploads/imgs/{$row["id"]}.jpg"; // Assumindo que as imagens são PNG
+            $imagemProduto = "uploads/imgs/{$row["id"]}.jpg"; // Assumindo que as imagens são PNG
 
             // Verifique se a imagem do produto existe no caminho especificado
             if (file_exists($imagemProduto)) {

@@ -38,8 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $totalInserido++; // Incrementar o contador de produtos inseridos com sucesso
             }
 
-            // Retornar o total de produtos inseridos como resposta JSON
-            echo json_encode(['totalInserido' => $totalInserido]);
+            // Redirecionar de volta para produto.php com a mensagem de sucesso
+            header("Location: produtos_xml.php?mensagem=Registros inseridos com sucesso");
+                        exit;
         } catch (PDOException $e) {
             echo "Erro ao inserir os produtos: " . $e->getMessage();
         }

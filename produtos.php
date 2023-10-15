@@ -1,6 +1,7 @@
 <?php
 include 'session.php';
 include 'includes/conexao.php';
+include 'verificaadmin.php';
 $conn = conexao();
 ?>
 <!DOCTYPE html>

@@ -1,6 +1,9 @@
 <?php
-include 'session.php';
-include 'includes/conexao.php';
+// Verifique se os arquivos session.php e conexao.php existem e inclua-os corretamente
+require_once '../session.php';
+require_once '../includes/conexao.php';
+
+// Conecte-se ao banco de dados
 $conn = conexao();
 
 if (isset($_GET['id'])) {
@@ -23,6 +26,5 @@ if (isset($_GET['id'])) {
 }
 
 // Redirecione de volta para a página de produtos
-header('Location: produtos.php');
+header('Location: ../produtos.php');
 exit;
-?>
